@@ -31,7 +31,7 @@ public class Recorder : MonoBehaviour
 
             for (int v = 0; v < views; v++)
             {
-                t.position = pivots[i].position + dirs[v] * 5;
+                t.position = pivots[i].position + dirs[v] * distance;
                 t.rotation = Quaternion.LookRotation(-dirs[v]);
 
 
