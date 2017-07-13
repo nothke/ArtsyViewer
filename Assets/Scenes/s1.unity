@@ -178,7 +178,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 1643485239}
   - component: {fileID: 1643485238}
   m_Layer: 0
-  m_Name: Set texture
+  m_Name: RENDERER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,8 +1473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed80a5e83c26adc49a140f9777fa0132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderCamera: {fileID: 2078589421}
   image: {fileID: 691510316}
   folderPath: Frames/JPEG/
+  views: 16
 --- !u!4 &1643485239
 Transform:
   m_ObjectHideFlags: 0
