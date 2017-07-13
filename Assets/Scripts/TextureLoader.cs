@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.UI;
-
 using System.IO;
 
 public class TextureLoader : MonoBehaviour
@@ -59,12 +57,6 @@ public class TextureLoader : MonoBehaviour
 
         Texture2D tex = new Texture2D(2, 2);
         tex.LoadImage(File.ReadAllBytes(filePath));
-
-        /*
-        float t = Time.realtimeSinceStartup;
-        tex.LoadImage(File.ReadAllBytes(filePath));
-        t = Time.realtimeSinceStartup - t;
-        Debug.Log("Loading image from file completed in: " + t);*/
 
         return tex;
     }

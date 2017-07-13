@@ -45,7 +45,7 @@ public class Recorder : MonoBehaviour
                 t.rotation = Quaternion.LookRotation(cameraPivots[c].transform.position - point);
 
                 string filePath = "Frames/" + c + "_" + p + ".png";
-                //Application.CaptureScreenshot("Frames/" + c + "_" + p + ".png");
+                
 
                 yield return new WaitForEndOfFrame();
 
@@ -55,44 +55,16 @@ public class Recorder : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
 
-
-
+                //Application.CaptureScreenshot(filePath);
                 CaptureTransparentScreenshot(filePath);
-
-
 
                 yield return null;
             }
         }
-
-        /*
-        for (int i = 0; i < pivots.Length; i++)
-        {
-            if (!pivots[i]) continue;
-
-            for (int v = 0; v < views; v++)
-            {
-                t.position = pivots[i].position + dirs[v] * distance;
-                t.rotation = Quaternion.LookRotation(-dirs[v]);
-
-
-                Application.CaptureScreenshot("Frames/" + i + "_" + v + ".png");
-
-                yield return null;
-            }
-        }*/
     }
 
     public void CaptureTransparentScreenshot(string filePath)
     {
-        //Camera cam;
-
-        //RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 32);
-        //Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
-
-        //screenShot.SetPixels(rt.)
-
-        //rt.Release()
 
         Texture2D sshot = new Texture2D(Screen.width, Screen.height);
         sshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -102,49 +74,4 @@ public class Recorder : MonoBehaviour
         Destroy(sshot);
         File.WriteAllBytes(filePath, pngShot);
     }
-
-    /*
-    Vector3[] GetDirs()
-    {
-        Vector3[] dirs = new Vector3[views];
-
-        float theta = (2.0f * Mathf.PI) / views;
-
-        for (int i = 0; i < dirs.Length; i++)
-        {
-            float x = Mathf.Cos(theta * i);
-            float y = Mathf.Sin(theta * i);
-
-            dirs[i] = new Vector3(x, 0, y);
-        }
-
-        return dirs;
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (views < 2) views = 2;
-
-        Vector3[] dirs = GetDirs();
-
-        if (pivots == null) return;
-
-        foreach (var pivot in pivots)
-        {
-            if (!pivot) continue;
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(pivot.position, 0.2f);
-
-            for (int i = 0; i < dirs.Length; i++)
-            {
-                Vector3 origin = pivot.position + dirs[i] * distance;
-                Vector3 dir = -dirs[i];
-
-                Gizmos.color = Color.magenta;
-                Gizmos.DrawSphere(origin, 0.1f);
-                Gizmos.DrawRay(origin, dir);
-            }
-        }
-    }*/
 }
