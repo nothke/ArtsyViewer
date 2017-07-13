@@ -53,7 +53,7 @@ public class TextureLoader : MonoBehaviour
 
         if (string.IsNullOrEmpty(filePath))
         {
-            Debug.LogError("Texture " + filePath + " doesn't exist");
+            Debug.LogError("Texture " + fileName + " doesn't exist");
             return null;
         }
 
