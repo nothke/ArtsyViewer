@@ -8,23 +8,49 @@ public class Recorder : MonoBehaviour
 {
     public Camera recordingCamera;
 
-    public Transform[] pivots;
+    CameraPivot[] cameraPivots;
 
     public int views = 8;
     public float distance = 5;
 
     void Start()
     {
+        cameraPivots = FindObjectsOfType<CameraPivot>();
+
         StartCoroutine(EveryFrameAScreenshot());
     }
 
     IEnumerator EveryFrameAScreenshot()
     {
-        Vector3[] dirs = GetDirs();
+        //Vector3[] dirs = GetDirs();
         Transform t = recordingCamera.transform;
 
         yield return null;
 
+        if (cameraPivots == null || cameraPivots.Length == 0)
+        {
+            Debug.LogError("No camera pivots found in scene");
+            yield break;
+        }
+
+        for (int c = 0; c < cameraPivots.Length; c++)
+        {
+            Vector3[] points = cameraPivots[c].Points;
+
+            for (int p = 0; p < points.Length; p++)
+            {
+                Vector3 point = cameraPivots[c].transform.TransformPoint(points[p]);
+
+                t.position = point;
+                t.rotation = Quaternion.LookRotation(cameraPivots[c].transform.position - point);
+
+                Application.CaptureScreenshot("Frames/" + c + "_" + p + ".png");
+
+                yield return null;
+            }
+        }
+
+        /*
         for (int i = 0; i < pivots.Length; i++)
         {
             if (!pivots[i]) continue;
@@ -39,9 +65,10 @@ public class Recorder : MonoBehaviour
 
                 yield return null;
             }
-        }
+        }*/
     }
 
+    /*
     Vector3[] GetDirs()
     {
         Vector3[] dirs = new Vector3[views];
@@ -84,5 +111,5 @@ public class Recorder : MonoBehaviour
                 Gizmos.DrawRay(origin, dir);
             }
         }
-    }
+    }*/
 }
