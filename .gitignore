@@ -36,3 +36,5 @@ sysinfo.txt
 # Project stuff
 /Frames/
 !/Frames/PNG/
+
+Assets/Plugins/Editor/JetBrains/
