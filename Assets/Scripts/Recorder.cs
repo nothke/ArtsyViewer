@@ -6,21 +6,22 @@ using System.IO;
 
 public class Recorder : MonoBehaviour
 {
+    public Camera recordingCamera;
 
     public Transform[] pivots;
 
     public int views = 8;
+    public float distance = 5;
 
     void Start()
     {
         StartCoroutine(EveryFrameAScreenshot());
     }
 
-
     IEnumerator EveryFrameAScreenshot()
     {
         Vector3[] dirs = GetDirs();
-        Transform t = Camera.main.transform;
+        Transform t = recordingCamera.transform;
 
         yield return null;
 
@@ -28,11 +29,11 @@ public class Recorder : MonoBehaviour
         {
             if (!pivots[i]) continue;
 
-            t.position = pivots[i].position;
-
             for (int v = 0; v < views; v++)
             {
-                t.rotation = Quaternion.LookRotation(dirs[v]);
+                t.position = pivots[i].position + dirs[v] * 5;
+                t.rotation = Quaternion.LookRotation(-dirs[v]);
+
 
                 Application.CaptureScreenshot("Frames/Pivot_" + i + "_" + v + ".png");
 
@@ -73,10 +74,14 @@ public class Recorder : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(pivot.position, 0.2f);
 
-            foreach (var dir in dirs)
+            for (int i = 0; i < dirs.Length; i++)
             {
+                Vector3 origin = pivot.position + dirs[i] * distance;
+                Vector3 dir = -dirs[i];
+
                 Gizmos.color = Color.magenta;
-                Gizmos.DrawLine(pivot.position, pivot.position + dir);
+                Gizmos.DrawSphere(origin, 0.1f);
+                Gizmos.DrawRay(origin, dir);
             }
         }
     }
