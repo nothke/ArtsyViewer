@@ -12,36 +12,49 @@ public class ImageSwapper : MonoBehaviour
     public Image image;
     public SpriteRenderer spriteRenderer;
 
-    Dictionary<Vector3, Sprite> imageDict = new Dictionary<Vector3, Sprite>();
+    CameraPivot pivot;
+
+    PointTowardsCamera spritePointer;
 
     void Start()
     {
         TextureLoader.e.LoadImages();
 
         var pivots = CameraPivot.GetAllInScene();
-        Vector3[] points = pivots[0].Points;
+        pivot = pivots[0];
+        //Vector3[] points = pivots[0].Points;
+
+        spritePointer = spriteRenderer.GetComponent<PointTowardsCamera>();
 
 
-        // Map images to positions
-        for (int i = 0; i < points.Length; i++)
-        {
-            imageDict.Add(points[i], TextureLoader.e.sprites[i]);
-        }
     }
+
+    int prevIndex;
 
     void Update()
     {
-        Vector3[] points = imageDict.Keys.ToArray();
+        Vector3[] points = (Vector3[])pivot.Points.Clone();
+
+        for (int p = 0; p < points.Length; p++)
+        {
+            points[p] = pivot.transform.TransformPoint(points[p]);
+        }
 
         Vector3 cameraPosition = viewCamera.transform.position;
-        int i = MathUtils.GetClosestPointIndex(cameraPosition, points);
+        int index = MathUtils.GetClosestPointIndex(cameraPosition, points);
 
-        if (spriteRenderer)
+        if (prevIndex != index)
         {
-            Sprite _sprite = TextureLoader.e.sprites[i];
-            spriteRenderer.sprite = _sprite;
+            if (spriteRenderer)
+            {
+                Sprite _sprite = TextureLoader.e.sprites[index];
+                spriteRenderer.sprite = _sprite;
+                spritePointer.UpdateLook();
+            }
+            else
+                image.sprite = TextureLoader.e.sprites[index];
         }
-        else
-            image.sprite = TextureLoader.e.sprites[i];
+
+        prevIndex = index;
     }
 }
