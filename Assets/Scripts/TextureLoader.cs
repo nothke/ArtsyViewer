@@ -8,38 +8,28 @@ using System.IO;
 
 public class TextureLoader : MonoBehaviour
 {
-    public Camera renderCamera;
-
-    public Image image;
+    public static TextureLoader e;
+    void Awake() { e = this; }
 
     public string folderPath = "Frames/JPEG/";
 
-    Sprite[] sprites;
+    public Sprite[] sprites;
 
-    public int views = 16;
-
-    void Start()
+    public void LoadImages()
     {
-        sprites = new Sprite[views];
+        int fileCount = Directory.GetFiles(folderPath).Length;
 
-        for (int i = 0; i < sprites.Length; i++)
+        sprites = new Sprite[fileCount];
+
+        for (int i = 0; i < fileCount; i++)
         {
-            Texture2D tex = GetTextureFromFile("Pivot_0_" + i);
+            Texture2D tex = GetTextureFromFile("0_" + i);
 
             Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
 
             sprites[i] = sprite;
         }
     }
-
-
-    void Update()
-    {
-        int dir = Mathf.FloorToInt(renderCamera.transform.eulerAngles.y / 360 * views);
-
-        image.sprite = sprites[dir];
-    }
-
 
     public Texture2D GetTextureFromFile(string fileName)
     {
