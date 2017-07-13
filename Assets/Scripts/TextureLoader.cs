@@ -19,6 +19,8 @@ public class TextureLoader : MonoBehaviour
     {
         int fileCount = Directory.GetFiles(folderPath).Length;
 
+        Debug.Log("Files in folder " + fileCount);
+
         sprites = new Sprite[fileCount];
 
         for (int i = 0; i < fileCount; i++)

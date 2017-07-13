@@ -44,7 +44,22 @@ public class Recorder : MonoBehaviour
                 t.position = point;
                 t.rotation = Quaternion.LookRotation(cameraPivots[c].transform.position - point);
 
-                Application.CaptureScreenshot("Frames/" + c + "_" + p + ".png");
+                string filePath = "Frames/" + c + "_" + p + ".png";
+                //Application.CaptureScreenshot("Frames/" + c + "_" + p + ".png");
+
+                yield return new WaitForEndOfFrame();
+
+                GL.Clear(true, true, Color.clear);
+
+                yield return null;
+
+                yield return new WaitForEndOfFrame();
+
+
+
+                CaptureTransparentScreenshot(filePath);
+
+
 
                 yield return null;
             }
@@ -66,6 +81,26 @@ public class Recorder : MonoBehaviour
                 yield return null;
             }
         }*/
+    }
+
+    public void CaptureTransparentScreenshot(string filePath)
+    {
+        //Camera cam;
+
+        //RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 32);
+        //Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+
+        //screenShot.SetPixels(rt.)
+
+        //rt.Release()
+
+        Texture2D sshot = new Texture2D(Screen.width, Screen.height);
+        sshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        sshot.Apply();
+
+        byte[] pngShot = sshot.EncodeToPNG();
+        Destroy(sshot);
+        File.WriteAllBytes(filePath, pngShot);
     }
 
     /*
