@@ -21,8 +21,11 @@ public class CameraPivot : MonoBehaviour
 
     private void OnValidate()
     {
+
         points = IcoSphere.GetIcoSpherePoints(radius, icoSphereRecursions);
-        Debug.Log("Number of points: " + points.Length);
+
+        if (!Application.isPlaying)
+            Debug.Log("Number of points: " + points.Length);
     }
 
     private void OnDrawGizmos()
