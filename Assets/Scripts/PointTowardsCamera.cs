@@ -8,15 +8,14 @@ public class PointTowardsCamera : MonoBehaviour
 
     public Transform target;
 
-
     void Update()
     {
         if (updateInUpdate)
-            transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized, Vector3.up);
+            UpdateLook();
     }
 
     public void UpdateLook()
     {
-        transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized, Vector3.up);
+        transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized, transform.parent.up);
     }
 }
