@@ -8,24 +8,44 @@ using System.IO;
 
 public class TextureLoader : MonoBehaviour
 {
+    public Camera renderCamera;
+
     public Image image;
 
     public string folderPath = "Frames/JPEG/";
 
+    Sprite[] sprites;
+
+    public int views = 16;
+
     void Start()
     {
-        Texture2D tex = GetTextureFromFile();
+        sprites = new Sprite[views];
 
-        Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            Texture2D tex = GetTextureFromFile("Pivot_0_" + i);
 
-        image.sprite = sprite;
+            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+
+            sprites[i] = sprite;
+        }
     }
 
-    public Texture2D GetTextureFromFile()
+
+    void Update()
+    {
+        int dir = Mathf.FloorToInt(renderCamera.transform.eulerAngles.y / 360 * views);
+
+        image.sprite = sprites[dir];
+    }
+
+
+    public Texture2D GetTextureFromFile(string fileName)
     {
         string filePath = "";
 
-        string fileName = folderPath + "Pivot_0_0";
+        fileName = folderPath + fileName;
 
         if (!Directory.Exists(folderPath))
         {
@@ -41,7 +61,7 @@ public class TextureLoader : MonoBehaviour
 
         if (string.IsNullOrEmpty(filePath))
         {
-            Debug.LogError("Texture doesn't exist");
+            Debug.LogError("Texture " + filePath + " doesn't exist");
             return null;
         }
 

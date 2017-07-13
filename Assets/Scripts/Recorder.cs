@@ -35,7 +35,7 @@ public class Recorder : MonoBehaviour
                 t.rotation = Quaternion.LookRotation(-dirs[v]);
 
 
-                Application.CaptureScreenshot("Frames/Pivot_" + i + "_" + v + ".png");
+                Application.CaptureScreenshot("Frames/" + i + "_" + v + ".png");
 
                 yield return null;
             }
