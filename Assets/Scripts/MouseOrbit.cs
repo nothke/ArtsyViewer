@@ -21,6 +21,12 @@ public class MouseOrbit : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
+    private void Awake()
+    {
+        if (UnityEngine.VR.VRDevice.isPresent)
+            enabled = false;
+    }
+
     // Use this for initialization
     void Start()
     {

@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraPivot : MonoBehaviour
 {
     [Range(0, 4)]
-    public int icoSphereRecursions = 0;
+    public int icoSphereRecursions = 2;
     public float radius = 5;
 
-    public float directionGizmoLength = 0.1f;
+    public float directionGizmoLength = 0.5f;
 
     Vector3[] points;
 
