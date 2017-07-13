@@ -27,7 +27,7 @@ public class TextureLoader : MonoBehaviour
         {
             Texture2D tex = GetTextureFromFile("0_" + i);
 
-            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
 
             sprites[i] = sprite;
         }

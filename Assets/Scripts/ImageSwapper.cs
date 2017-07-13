@@ -10,6 +10,7 @@ public class ImageSwapper : MonoBehaviour
     public Camera viewCamera;
 
     public Image image;
+    public SpriteRenderer spriteRenderer;
 
     Dictionary<Vector3, Sprite> imageDict = new Dictionary<Vector3, Sprite>();
 
@@ -35,6 +36,12 @@ public class ImageSwapper : MonoBehaviour
         Vector3 cameraPosition = viewCamera.transform.position;
         int i = MathUtils.GetClosestPointIndex(cameraPosition, points);
 
-        image.sprite = TextureLoader.e.sprites[i];
+        if (spriteRenderer)
+        {
+            Sprite _sprite = TextureLoader.e.sprites[i];
+            spriteRenderer.sprite = _sprite;
+        }
+        else
+            image.sprite = TextureLoader.e.sprites[i];
     }
 }
