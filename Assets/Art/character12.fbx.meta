@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 054956a40b3046e4d9d588784c54ac55
+timeCreated: 1499905679
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ORG-chest
+    100004: ORG-foot.L
+    100006: ORG-foot.R
+    100008: ORG-forearm.L
+    100010: ORG-forearm.R
+    100012: ORG-hand.L
+    100014: ORG-hand.L_end
+    100016: ORG-hand.R
+    100018: ORG-hand.R_end
+    100020: ORG-head
+    100022: ORG-head_end
+    100024: ORG-hips
+    100026: ORG-neck
+    100028: ORG-shin.L
+    100030: ORG-shin.R
+    100032: ORG-shoulder.L
+    100034: ORG-shoulder.R
+    100036: ORG-spine
+    100038: ORG-thigh.L
+    100040: ORG-thigh.R
+    100042: ORG-toe.L
+    100044: ORG-toe.L_end
+    100046: ORG-toe.R
+    100048: ORG-toe.R_end
+    100050: ORG-upper_arm.L
+    100052: ORG-upper_arm.R
+    100054: rig
+    100056: root
+    100058: SKin
+    400000: //RootNode
+    400002: ORG-chest
+    400004: ORG-foot.L
+    400006: ORG-foot.R
+    400008: ORG-forearm.L
+    400010: ORG-forearm.R
+    400012: ORG-hand.L
+    400014: ORG-hand.L_end
+    400016: ORG-hand.R
+    400018: ORG-hand.R_end
+    400020: ORG-head
+    400022: ORG-head_end
+    400024: ORG-hips
+    400026: ORG-neck
+    400028: ORG-shin.L
+    400030: ORG-shin.R
+    400032: ORG-shoulder.L
+    400034: ORG-shoulder.R
+    400036: ORG-spine
+    400038: ORG-thigh.L
+    400040: ORG-thigh.R
+    400042: ORG-toe.L
+    400044: ORG-toe.L_end
+    400046: ORG-toe.R
+    400048: ORG-toe.R_end
+    400050: ORG-upper_arm.L
+    400052: ORG-upper_arm.R
+    400054: rig
+    400056: root
+    400058: SKin
+    4300000: SKin
+    7400000: rig|idle
+    7400002: rig|run_block
+    7400004: rig|walk_block
+    7400006: rig|walk_nice
+    9500000: //RootNode
+    13700000: SKin
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
