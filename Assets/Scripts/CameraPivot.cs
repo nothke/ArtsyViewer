@@ -14,6 +14,11 @@ public class CameraPivot : MonoBehaviour
 
     public Vector3[] Points { get { return points; } }
 
+    public static CameraPivot[] GetAllInScene()
+    {
+        return FindObjectsOfType<CameraPivot>();
+    }
+
     private void OnValidate()
     {
         points = IcoSphere.GetIcoSpherePoints(radius, icoSphereRecursions);
